@@ -41,6 +41,7 @@ app.post("/webhook", (req, res) => {
     SEU_PERFIL,
     Whatsapp_DDD_9XXXXXXXX,
     Selecione_uma_opção,
+    Mensagem,
   } = formData.reduce((result, { key, value }) => {
     result[key] = value;
     return result;
@@ -82,19 +83,19 @@ app.post("/webhook", (req, res) => {
       `Olá, ${Nome}! Agradecemos o seu contato, em breve a nossa equipe irá te atender.`
     )
     .then((result) => {
-      console.log("Mensagem enviada com sucesso!", result);
+      console.log("Mensagem enviada com sucesso!");
 
       const myPhone = "557192093801@c.us";
-      const newContactReceiver = `*Novo Contato Recebido*\n\n- Nome do lead: ${Nome}\n- Email: ${email}\n- Whatsapp: ${Whatsapp_DDD_9XXXXXXXX}\n- Plataforma: ${PLATAFORMA}\n- Perfil: ${SEU_PERFIL}\n- Seguidores: ${Selecione_uma_opção}`;
+      const newContactReceiver = `*Novo Contato Recebido*\n\n- Nome do lead: ${Nome}\n- Email: ${email}\n- Whatsapp: ${Whatsapp_DDD_9XXXXXXXX}\n- Plataforma: ${PLATAFORMA}\n- Perfil: ${SEU_PERFIL}\n- Seguidores: ${Selecione_uma_opção}\n- Mensagem: ${Mensagem}`;
 
       client
         .sendMessage(myPhone, newContactReceiver)
         .then((result2) => {
-          console.log("Novo contato entregue com sucesso!", result2);
+          console.log("Novo contato entregue com sucesso!");
           res.status(200).json({ success: true });
         })
         .catch((error2) => {
-          console.error("Erro ao enviar mensagem de contato:", error2);
+          console.error("Erro ao enviar mensagem de contato:");
           res
             .status(500)
             .json({ error: "Erro ao enviar mensagem de contato." });
