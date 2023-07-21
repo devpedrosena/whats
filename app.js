@@ -31,23 +31,23 @@ app.use(bodyParser.json());
 
 // Rota do webhook para receber notificações do formulário
 app.post("/webhook", (req, res) => {
+  const formData = req.body;
+
+  // Extrair os valores do array de objetos
   const {
-    Whatsapp_DDD_9XXXXXXXX,
-    Nome,
     email,
+    Nome,
     PLATAFORMA,
     SEU_PERFIL,
+    Whatsapp_DDD_9XXXXXXXX,
     Selecione_uma_opção,
-  } = req.body;
+  } = formData.reduce((result, { key, value }) => {
+    result[key] = value;
+    return result;
+  }, {});
 
-  if (!Whatsapp_DDD_9XXXXXXXX) {
-    return res.status(400).json({ error: 'Campo "Whatsapp" é obrigatório.' });
-  }
-
-  // Convertendo o número de telefone para string
+  // Verificar se o número de telefone possui o formato correto
   const rawPhoneNumber = Whatsapp_DDD_9XXXXXXXX.toString().replace(/\D/g, "");
-
-  // Tratamento para remover o primeiro dígito "9" apenas se o número tiver 11 dígitos
   let phoneNumber;
   if (rawPhoneNumber.length === 11 && rawPhoneNumber[2] === "9") {
     phoneNumber = `55${rawPhoneNumber.substring(
@@ -75,24 +75,17 @@ app.post("/webhook", (req, res) => {
     });
   }
 
-  // Enviar a mensagem
+  // Enviar a mensagem personalizada
   client
     .sendMessage(
       phoneNumber,
-      `Olá, ${Nome} agradecemos o seu contato, em breve a nossa equipe irá te atender.`
+      `Olá, ${Nome}! Agradecemos o seu contato. Em breve a nossa equipe irá te atender.\n\nDados do formulário:\n\n- Email: ${email}\n- Plataforma: ${PLATAFORMA}\n- Perfil: ${SEU_PERFIL}\n- Seguidores: ${Selecione_uma_opção}`
     )
     .then((result) => {
       console.log("Mensagem enviada com sucesso!", result);
 
       const myPhone = "557192093801@c.us";
-      const newContactReceiver = `*Novo Contato Recebido*
-
-      *Nome do lead*: ${Nome},
-      *Email*: ${email},
-      *Whatsapp*: ${Whatsapp_DDD_9XXXXXXXX},
-      *Plataforma*: ${PLATAFORMA},
-      *Perfil*: ${SEU_PERFIL},
-      *Seguidores*: ${Selecione_uma_opção}`;
+      const newContactReceiver = `*Novo Contato Recebido*\n\n- Nome do lead: ${Nome}\n- Email: ${email}\n- Whatsapp: ${Whatsapp_DDD_9XXXXXXXX}\n- Plataforma: ${PLATAFORMA}\n- Perfil: ${SEU_PERFIL}\n- Seguidores: ${Selecione_uma_opção}`;
 
       client
         .sendMessage(myPhone, newContactReceiver)
