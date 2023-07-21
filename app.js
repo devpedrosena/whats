@@ -79,7 +79,7 @@ app.post("/webhook", (req, res) => {
   client
     .sendMessage(
       phoneNumber,
-      `Olá, ${Nome}! Agradecemos o seu contato. Em breve a nossa equipe irá te atender.\n\nDados do formulário:\n\n- Email: ${email}\n- Plataforma: ${PLATAFORMA}\n- Perfil: ${SEU_PERFIL}\n- Seguidores: ${Selecione_uma_opção}`
+      `Olá, ${Nome}! Agradecemos o seu contato, em breve a nossa equipe irá te atender.`
     )
     .then((result) => {
       console.log("Mensagem enviada com sucesso!", result);
