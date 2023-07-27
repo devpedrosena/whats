@@ -1,4 +1,5 @@
 const { getClient } = require("./whatsapp");
+const axios = require("axios");
 const nodemailer = require("nodemailer");
 require("dotenv").config();
 
@@ -151,5 +152,42 @@ module.exports = {
         res.status(200).json({ success: true });
       }
     });
+
+    const apiUrl = "https://app.bahia.fun/api/leads";
+    const authToken = process.env.PERFEX_API
+
+    async function addLead() {
+      try {
+        const leadData = new URLSearchParams({
+          name: Nome,
+          source: 3,
+          status: 2,
+          email: email,
+          is_public: 1,
+          phonenumber: Whatsapp_DDD_9XXXXXXXX
+        });
+
+        const config = {
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+            authtoken: authToken,
+          },
+        };
+
+        const response = await axios.post(apiUrl, leadData.toString(), config);
+
+        if (response.status === 200) {
+          console.log("Lead adicionado com sucesso:", response.data);
+        } else {
+          console.log("Erro ao adicionar o lead:", response.data);
+        }
+      } catch (error) {
+        console.error("Erro na requisição:", error.message);
+      }
+    }
+
+    // Executa a função para adicionar um novo lead
+    addLead();
+
   },
 };
