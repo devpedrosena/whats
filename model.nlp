@@ -1,0 +1,256 @@
+{
+  "settings": {
+    "languages": [
+      "pt"
+    ],
+    "tag": "nlp",
+    "threshold": 0.5,
+    "autoLoad": true,
+    "autoSave": true,
+    "modelFileName": "model.nlp",
+    "executeActionsBeforeAnswers": false,
+    "calculateSentiment": true
+  },
+  "nluManager": {
+    "settings": {
+      "tag": "nlu-manager"
+    },
+    "locales": [
+      "pt"
+    ],
+    "languageNames": {},
+    "domainManagers": {
+      "pt": {
+        "settings": {
+          "locale": "pt",
+          "trainByDomain": false,
+          "tag": "domain-manager-pt",
+          "nluByDomain": {
+            "default": {
+              "className": "NeuralNlu",
+              "settings": {}
+            }
+          },
+          "useStemDict": true
+        },
+        "stemDict": {
+          "oi": {
+            "intent": "saudacao.oi",
+            "domain": "default"
+          },
+          "ola": {
+            "intent": "saudacao.oi",
+            "domain": "default"
+          },
+          "bem,tud": {
+            "intent": "saudacao.oi",
+            "domain": "default"
+          },
+          "atendent,com,fal,um": {
+            "intent": "atendente.falar",
+            "domain": "default"
+          }
+        },
+        "intentDict": {
+          "saudacao.oi": "default",
+          "atendente.falar": "default"
+        },
+        "sentences": [
+          {
+            "domain": "default",
+            "utterance": "oi",
+            "intent": "saudacao.oi"
+          },
+          {
+            "domain": "default",
+            "utterance": "olá",
+            "intent": "saudacao.oi"
+          },
+          {
+            "domain": "default",
+            "utterance": "tudo bem",
+            "intent": "saudacao.oi"
+          },
+          {
+            "domain": "default",
+            "utterance": "falar com um atendente",
+            "intent": "atendente.falar"
+          }
+        ],
+        "domains": {
+          "master_domain": {
+            "settings": {
+              "locale": "pt",
+              "tag": "nlu-pt",
+              "keepStopwords": true,
+              "nonefeatureValue": 1,
+              "nonedeltaMultiplier": 1.2,
+              "spellCheck": false,
+              "spellCheckDistance": 1,
+              "filterZeros": true,
+              "log": true
+            },
+            "features": {
+              "oi": 1,
+              "ola": 1,
+              "tud": 1,
+              "bem": 1,
+              "fal": 1,
+              "com": 1,
+              "um": 1,
+              "atendent": 1
+            },
+            "intents": {
+              "saudacao.oi": 1,
+              "atendente.falar": 1
+            },
+            "intentFeatures": {
+              "saudacao.oi": {
+                "oi": 1,
+                "ola": 1,
+                "tud": 1,
+                "bem": 1
+              },
+              "atendente.falar": {
+                "fal": 1,
+                "com": 1,
+                "um": 1,
+                "atendent": 1
+              }
+            },
+            "featuresToIntent": {
+              "oi": [
+                "saudacao.oi"
+              ],
+              "ola": [
+                "saudacao.oi"
+              ],
+              "tud": [
+                "saudacao.oi"
+              ],
+              "bem": [
+                "saudacao.oi"
+              ],
+              "fal": [
+                "atendente.falar"
+              ],
+              "com": [
+                "atendente.falar"
+              ],
+              "um": [
+                "atendente.falar"
+              ],
+              "atendent": [
+                "atendente.falar"
+              ]
+            },
+            "neuralNetwork": {
+              "settings": {
+                "locale": "pt",
+                "tag": "nlu-pt",
+                "keepStopwords": true,
+                "nonefeatureValue": 1,
+                "nonedeltaMultiplier": 1.2,
+                "spellCheck": false,
+                "spellCheckDistance": 1,
+                "filterZeros": true,
+                "log": true
+              },
+              "features": [
+                "oi",
+                "ola",
+                "tud",
+                "bem",
+                "fal",
+                "com",
+                "um",
+                "atendent"
+              ],
+              "intents": [
+                "saudacao.oi",
+                "atendente.falar"
+              ],
+              "perceptrons": [
+                [
+                  6.6417555809021,
+                  6.699322700500488,
+                  3.448590040206909,
+                  3.448590040206909,
+                  -1.8643001317977905,
+                  -1.8643001317977905,
+                  -1.8643001317977905,
+                  -1.8643001317977905,
+                  7.47197686238971
+                ],
+                [
+                  -0.7316316962242126,
+                  -0.7249134182929993,
+                  -0.435520201921463,
+                  -0.435520201921463,
+                  3.385908365249634,
+                  3.385908365249634,
+                  3.385908365249634,
+                  3.385908365249634,
+                  0.7409152529467603
+                ]
+              ]
+            }
+          }
+        }
+      }
+    },
+    "intentDomains": {},
+    "extraSentences": [
+      [
+        "pt",
+        "oi"
+      ],
+      [
+        "pt",
+        "olá"
+      ],
+      [
+        "pt",
+        "tudo bem"
+      ],
+      [
+        "pt",
+        "falar com um atendente"
+      ]
+    ]
+  },
+  "ner": {
+    "settings": {
+      "tag": "ner",
+      "entityPreffix": "%",
+      "entitySuffix": "%"
+    },
+    "rules": {}
+  },
+  "nlgManager": {
+    "settings": {
+      "tag": "nlg-manager"
+    },
+    "responses": {
+      "pt": {
+        "saudacao.oi": [
+          {
+            "answer": "Olá! Tudo bem com você?"
+          }
+        ],
+        "atendente.falar": [
+          {
+            "answer": "Um atendente irá te atender em breve."
+          }
+        ]
+      }
+    }
+  },
+  "actionManager": {
+    "settings": {
+      "tag": "action-manager"
+    },
+    "actions": {}
+  },
+  "slotManager": {}
+}
