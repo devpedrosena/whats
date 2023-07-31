@@ -34,47 +34,120 @@
           "useStemDict": true
         },
         "stemDict": {
+          "amig,ola": {
+            "intent": "saudacao",
+            "domain": "default"
+          },
+          "quem,sao,voc": {
+            "intent": "time",
+            "domain": "default"
+          },
           "oi": {
-            "intent": "saudacao.oi",
+            "intent": "saudacao",
             "domain": "default"
           },
           "ola": {
-            "intent": "saudacao.oi",
+            "intent": "saudacao",
             "domain": "default"
           },
-          "bem,tud": {
-            "intent": "saudacao.oi",
+          "faz,o,que,voc": {
+            "intent": "servicos",
             "domain": "default"
           },
-          "atendent,com,fal,um": {
-            "intent": "atendente.falar",
+          "bom,dia": {
+            "intent": "bom-dia",
+            "domain": "default"
+          },
+          "boa,tard": {
+            "intent": "boa-tarde",
+            "domain": "default"
+          },
+          "boa,noit": {
+            "intent": "boa-noite",
+            "domain": "default"
+          },
+          "obrig": {
+            "intent": "agradecimento",
+            "domain": "default"
+          },
+          "ajud,me": {
+            "intent": "agradecimento",
+            "domain": "default"
+          },
+          "val": {
+            "intent": "agradecimento",
             "domain": "default"
           }
         },
         "intentDict": {
-          "saudacao.oi": "default",
-          "atendente.falar": "default"
+          "saudacao": "default",
+          "time": "default",
+          "servicos": "default",
+          "bom-dia": "default",
+          "boa-tarde": "default",
+          "boa-noite": "default",
+          "agradecimento": "default"
         },
         "sentences": [
           {
             "domain": "default",
+            "utterance": "olá amigos",
+            "intent": "saudacao"
+          },
+          {
+            "domain": "default",
+            "utterance": "quem são vocês?",
+            "intent": "time"
+          },
+          {
+            "domain": "default",
             "utterance": "oi",
-            "intent": "saudacao.oi"
+            "intent": "saudacao"
           },
           {
             "domain": "default",
             "utterance": "olá",
-            "intent": "saudacao.oi"
+            "intent": "saudacao"
           },
           {
             "domain": "default",
-            "utterance": "tudo bem",
-            "intent": "saudacao.oi"
+            "utterance": "o que vocês fazem?",
+            "intent": "servicos"
           },
           {
             "domain": "default",
-            "utterance": "falar com um atendente",
-            "intent": "atendente.falar"
+            "utterance": "Oi",
+            "intent": "saudacao"
+          },
+          {
+            "domain": "default",
+            "utterance": "Bom dia",
+            "intent": "bom-dia"
+          },
+          {
+            "domain": "default",
+            "utterance": "Boa tarde",
+            "intent": "boa-tarde"
+          },
+          {
+            "domain": "default",
+            "utterance": "Boa noite",
+            "intent": "boa-noite"
+          },
+          {
+            "domain": "default",
+            "utterance": "obrigado",
+            "intent": "agradecimento"
+          },
+          {
+            "domain": "default",
+            "utterance": "me ajudou",
+            "intent": "agradecimento"
+          },
+          {
+            "domain": "default",
+            "utterance": "valeu",
+            "intent": "agradecimento"
           }
         ],
         "domains": {
@@ -91,57 +164,126 @@
               "log": true
             },
             "features": {
-              "oi": 1,
               "ola": 1,
-              "tud": 1,
-              "bem": 1,
-              "fal": 1,
-              "com": 1,
-              "um": 1,
-              "atendent": 1
+              "amig": 1,
+              "quem": 1,
+              "sao": 1,
+              "voc": 1,
+              "oi": 1,
+              "o": 1,
+              "que": 1,
+              "faz": 1,
+              "bom": 1,
+              "dia": 1,
+              "boa": 1,
+              "tard": 1,
+              "noit": 1,
+              "obrig": 1,
+              "me": 1,
+              "ajud": 1,
+              "val": 1
             },
             "intents": {
-              "saudacao.oi": 1,
-              "atendente.falar": 1
+              "saudacao": 1,
+              "time": 1,
+              "servicos": 1,
+              "bom-dia": 1,
+              "boa-tarde": 1,
+              "boa-noite": 1,
+              "agradecimento": 1
             },
             "intentFeatures": {
-              "saudacao.oi": {
-                "oi": 1,
+              "saudacao": {
                 "ola": 1,
-                "tud": 1,
-                "bem": 1
+                "amig": 1,
+                "oi": 1
               },
-              "atendente.falar": {
-                "fal": 1,
-                "com": 1,
-                "um": 1,
-                "atendent": 1
+              "time": {
+                "quem": 1,
+                "sao": 1,
+                "voc": 1
+              },
+              "servicos": {
+                "o": 1,
+                "que": 1,
+                "voc": 1,
+                "faz": 1
+              },
+              "bom-dia": {
+                "bom": 1,
+                "dia": 1
+              },
+              "boa-tarde": {
+                "boa": 1,
+                "tard": 1
+              },
+              "boa-noite": {
+                "boa": 1,
+                "noit": 1
+              },
+              "agradecimento": {
+                "obrig": 1,
+                "me": 1,
+                "ajud": 1,
+                "val": 1
               }
             },
             "featuresToIntent": {
-              "oi": [
-                "saudacao.oi"
-              ],
               "ola": [
-                "saudacao.oi"
+                "saudacao"
               ],
-              "tud": [
-                "saudacao.oi"
+              "amig": [
+                "saudacao"
               ],
-              "bem": [
-                "saudacao.oi"
+              "oi": [
+                "saudacao"
               ],
-              "fal": [
-                "atendente.falar"
+              "quem": [
+                "time"
               ],
-              "com": [
-                "atendente.falar"
+              "sao": [
+                "time"
               ],
-              "um": [
-                "atendente.falar"
+              "voc": [
+                "time",
+                "servicos"
               ],
-              "atendent": [
-                "atendente.falar"
+              "o": [
+                "servicos"
+              ],
+              "que": [
+                "servicos"
+              ],
+              "faz": [
+                "servicos"
+              ],
+              "bom": [
+                "bom-dia"
+              ],
+              "dia": [
+                "bom-dia"
+              ],
+              "boa": [
+                "boa-tarde",
+                "boa-noite"
+              ],
+              "tard": [
+                "boa-tarde"
+              ],
+              "noit": [
+                "boa-noite"
+              ],
+              "obrig": [
+                "agradecimento"
+              ],
+              "me": [
+                "agradecimento"
+              ],
+              "ajud": [
+                "agradecimento"
+              ],
+              "val": [
+                "agradecimento"
               ]
             },
             "neuralNetwork": {
@@ -157,41 +299,181 @@
                 "log": true
               },
               "features": [
-                "oi",
                 "ola",
-                "tud",
-                "bem",
-                "fal",
-                "com",
-                "um",
-                "atendent"
+                "amig",
+                "quem",
+                "sao",
+                "voc",
+                "oi",
+                "o",
+                "que",
+                "faz",
+                "bom",
+                "dia",
+                "boa",
+                "tard",
+                "noit",
+                "obrig",
+                "me",
+                "ajud",
+                "val"
               ],
               "intents": [
-                "saudacao.oi",
-                "atendente.falar"
+                "saudacao",
+                "time",
+                "servicos",
+                "bom-dia",
+                "boa-tarde",
+                "boa-noite",
+                "agradecimento"
               ],
               "perceptrons": [
                 [
-                  6.6417555809021,
-                  6.699322700500488,
-                  3.448590040206909,
-                  3.448590040206909,
-                  -1.8643001317977905,
-                  -1.8643001317977905,
-                  -1.8643001317977905,
-                  -1.8643001317977905,
-                  7.47197686238971
+                  10.189199447631836,
+                  1.108903408050537,
+                  -0.8776984810829163,
+                  -0.8776984810829163,
+                  -1.6474530696868896,
+                  10.869471549987793,
+                  -0.7268304824829102,
+                  -0.7268304824829102,
+                  -0.7268304824829102,
+                  -1.7346584796905518,
+                  -1.7346584796905518,
+                  -2.360178232192993,
+                  -1.2075308561325073,
+                  -1.1395384073257446,
+                  -3.3763506412506104,
+                  -1.713505744934082,
+                  -1.713505744934082,
+                  -3.362961530685425,
+                  3.432937964570655
                 ],
                 [
-                  -0.7316316962242126,
-                  -0.7249134182929993,
-                  -0.435520201921463,
-                  -0.435520201921463,
-                  3.385908365249634,
-                  3.385908365249634,
-                  3.385908365249634,
-                  3.385908365249634,
-                  0.7409152529467603
+                  -0.4848344326019287,
+                  -0.11722249537706375,
+                  5.075995922088623,
+                  5.075995922088623,
+                  3.686624526977539,
+                  -0.5303128957748413,
+                  -1.3834974765777588,
+                  -1.3834974765777588,
+                  -1.3834974765777588,
+                  -0.2592110335826874,
+                  -0.2592110335826874,
+                  -0.366990327835083,
+                  -0.18770019710063934,
+                  -0.17038750648498535,
+                  -0.44697222113609314,
+                  -0.24886664748191833,
+                  -0.24886664748191833,
+                  -0.4458264708518982,
+                  0.4468756213807639
+                ],
+                [
+                  -0.29664239287376404,
+                  -0.15351468324661255,
+                  -1.361655592918396,
+                  -1.361655592918396,
+                  2.4875690937042236,
+                  -0.36517569422721863,
+                  3.855029821395874,
+                  3.855029821395874,
+                  3.855029821395874,
+                  -0.21316532790660858,
+                  -0.21316532790660858,
+                  -0.34002119302749634,
+                  -0.16477543115615845,
+                  -0.1477987915277481,
+                  -0.2735970616340637,
+                  -0.20042258501052856,
+                  -0.20042258501052856,
+                  -0.2649034857749939,
+                  0.23305614453805817
+                ],
+                [
+                  -0.8494343161582947,
+                  -0.30776840448379517,
+                  -0.2597775161266327,
+                  -0.2597775161266327,
+                  -0.44040876626968384,
+                  -0.879710853099823,
+                  -0.17219315469264984,
+                  -0.17219315469264984,
+                  -0.17219315469264984,
+                  6.717501163482666,
+                  6.717501163482666,
+                  -0.6781979203224182,
+                  -0.34704214334487915,
+                  -0.3222622871398926,
+                  -0.8484106063842773,
+                  -0.46679675579071045,
+                  -0.46679675579071045,
+                  -0.8459486365318298,
+                  0.8489779484546204
+                ],
+                [
+                  -0.5717782974243164,
+                  -0.21599078178405762,
+                  -0.17824755609035492,
+                  -0.17824755609035492,
+                  -0.31540822982788086,
+                  -0.5814268589019775,
+                  -0.12340860813856125,
+                  -0.12340860813856125,
+                  -0.12340860813856125,
+                  -0.29319334030151367,
+                  -0.29319334030151367,
+                  4.3760199546813965,
+                  9.232377052307129,
+                  -4.859836101531982,
+                  -0.571168065071106,
+                  -0.31303006410598755,
+                  -0.31303006410598755,
+                  -0.5695729851722717,
+                  0.5733302605214491
+                ],
+                [
+                  -0.5763431191444397,
+                  -0.23091362416744232,
+                  -0.19740714132785797,
+                  -0.19740714132785797,
+                  -0.34972304105758667,
+                  -0.6088348031044006,
+                  -0.13722343742847443,
+                  -0.13722343742847443,
+                  -0.13722343742847443,
+                  -0.3072846233844757,
+                  -0.3072846233844757,
+                  4.400625705718994,
+                  -4.83658504486084,
+                  9.240792274475098,
+                  -0.5599738359451294,
+                  -0.33657971024513245,
+                  -0.33657971024513245,
+                  -0.55434650182724,
+                  0.546463739710523
+                ],
+                [
+                  -4.294352054595947,
+                  -1.2699286937713623,
+                  -1.199180245399475,
+                  -1.199180245399475,
+                  -1.9965914487838745,
+                  -4.380897521972656,
+                  -0.7972339987754822,
+                  -0.7972339987754822,
+                  -0.7972339987754822,
+                  -2.189685344696045,
+                  -2.189685344696045,
+                  -2.9229509830474854,
+                  -1.4660286903381348,
+                  -1.456399917602539,
+                  9.815474510192871,
+                  4.950582504272461,
+                  4.950582504272461,
+                  9.806877136230469,
+                  4.395748113175531
                 ]
               ]
             }
@@ -203,6 +485,14 @@
     "extraSentences": [
       [
         "pt",
+        "olá amigos"
+      ],
+      [
+        "pt",
+        "quem são vocês?"
+      ],
+      [
+        "pt",
         "oi"
       ],
       [
@@ -211,11 +501,35 @@
       ],
       [
         "pt",
-        "tudo bem"
+        "o que vocês fazem?"
       ],
       [
         "pt",
-        "falar com um atendente"
+        "Oi"
+      ],
+      [
+        "pt",
+        "Bom dia"
+      ],
+      [
+        "pt",
+        "Boa tarde"
+      ],
+      [
+        "pt",
+        "Boa noite"
+      ],
+      [
+        "pt",
+        "obrigado"
+      ],
+      [
+        "pt",
+        "me ajudou"
+      ],
+      [
+        "pt",
+        "valeu"
       ]
     ]
   },
@@ -233,14 +547,39 @@
     },
     "responses": {
       "pt": {
-        "saudacao.oi": [
+        "saudacao": [
           {
-            "answer": "Olá! Tudo bem com você?"
+            "answer": "Olá, tudo bem?"
           }
         ],
-        "atendente.falar": [
+        "servicos": [
           {
-            "answer": "Um atendente irá te atender em breve."
+            "answer": "Nós fazemos isso..."
+          }
+        ],
+        "time": [
+          {
+            "answer": "Nós somos..."
+          }
+        ],
+        "bom-dia": [
+          {
+            "answer": "Bom dia, em que posso ajudar ?"
+          }
+        ],
+        "boa-tarde": [
+          {
+            "answer": "Boa tarde, em que posso ajudar ?"
+          }
+        ],
+        "boa-noite": [
+          {
+            "answer": "Boa noite, em que posso ajudar ?"
+          }
+        ],
+        "agradecimento": [
+          {
+            "answer": "Fico feliz em ter ajudado"
           }
         ]
       }
